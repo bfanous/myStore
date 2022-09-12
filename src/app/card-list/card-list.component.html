@@ -1,0 +1,17 @@
+<div class="container mt-6">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let i of Users">
+      <div class="card mb-4">
+        <img
+          src="https:/picsum.photos/300/375"
+          alt="Test"
+          style="width: 100%"
+        />
+        <h1>Test Cards</h1>
+        <p class="price">${{ i }}</p>
+        <p>Some Text About Card</p>
+        <p><button>Add to Card</button></p>
+      </div>
+    </div>
+  </div>
+</div>
