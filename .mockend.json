@@ -7,6 +7,6 @@
       "loremSentences": { "minLength": 30, "maxLength": 50 }
     },
     "price": { "int": { "min": 100, "max": 10000 } },
-    "photo": { "regexp": "https://picsum\\.photos/seed/[0-9]{5}/250/350" }
+    "photo": { "regexp": "https://picsum\\.photos/seed/[0-9]{5}/250/500" }
   }
 }
