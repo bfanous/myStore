@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  itemsCounter: number = 0;
-  constructor() {}
+  // public itemsCounter: number = this.service.getItemsCounter();
+  constructor(public service: SharedService) {}
 
   ngOnInit(): void {}
 }

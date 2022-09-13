@@ -6,14 +6,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './Core/signup/signup.component';
 import { ProfileComponent } from './account/profile/profile.component';
+import { CardDetailsComponent } from './cardDetails/cardDetails.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'signin', component: SigninComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'cardList', component: CardListComponent },
-  { path: 'myCards', component: MyCardsComponent },
+  { path: 'viewProduct', component: CardDetailsComponent, pathMatch: 'full' },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'cardList', component: CardListComponent, pathMatch: 'full' },
+  { path: 'signin', component: SigninComponent, pathMatch: 'full' },
+  { path: 'signup', component: SignupComponent, pathMatch: 'full' },
+  { path: 'profile', component: ProfileComponent, pathMatch: 'full' },
+  { path: 'myCards', component: MyCardsComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

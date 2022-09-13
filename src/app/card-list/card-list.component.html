@@ -12,13 +12,7 @@
               }
       "
     >
-      <div class="card mb-4">
-        <img [src]="product.photo" alt="Test" />
-        <h1 class="text-uppercase fw-bold fs-2">{{ product.title }}</h1>
-        <p class="price">{{ product.price | currency }}</p>
-        <p class="text">{{ product.longDescription }}</p>
-        <p><button class="btn btn-primary">Add to Card</button></p>
-      </div>
+      <app-card [product]="product" class="card mb-4"></app-card>
     </div>
     <pagination-controls
       (pageChange)="pageChangeEvent($event)"

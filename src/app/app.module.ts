@@ -1,3 +1,11 @@
+import { InvoiceComponent } from './account/invoice/invoice.component';
+import { MyCardsComponent } from './account/myCards/myCards.component';
+import { ProfileComponent } from './account/profile/profile.component';
+import { CardPopupComponent } from './card-list/cardPopup/cardPopup.component';
+import { SignupComponent } from './Core/signup/signup.component';
+import { SignoutComponent } from './Core/signout/signout.component';
+import { SigninComponent } from './Core/signin/signin.component';
+import { CardComponent } from './card-list/card/card.component';
 import { NgModule } from '@angular/core';
 import { CardDetailsComponent } from './cardDetails/cardDetails.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,14 +21,22 @@ import { FooterComponent } from './footer/footer.component';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     HeaderComponent,
     CardListComponent,
     HomeComponent,
     FooterComponent,
-      CardDetailsComponent
-   ],
+    CardDetailsComponent,
+    CardComponent,
+    SigninComponent,
+    SignoutComponent,
+    SignupComponent,
+    CardPopupComponent,
+    ProfileComponent,
+    MyCardsComponent,
+    InvoiceComponent,
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
