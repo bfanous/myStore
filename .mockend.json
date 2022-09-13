@@ -1,7 +1,7 @@
 {
    "Product":{
       "title": { "string": {} },
-      "price": { "int": { "min": 100, "max": 1000000 } } ,
-      "photo": { "regexp": "https://picsum\\.photos/350/300" }
+      "price": { "int": { "min": 100, "max": 10000 } } ,
+      "photo": { "regexp": "https://picsum\\.photos/seed/[0-9]{5}/300/250" }
    }
 }
