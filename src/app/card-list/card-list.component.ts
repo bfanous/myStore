@@ -1,5 +1,6 @@
 import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
+import { ProductModel } from '../models/productModel';
 
 @Component({
   selector: 'app-card-list',
@@ -10,7 +11,7 @@ export class CardListComponent implements OnInit {
   page: number = 1;
   readonly limit: number = 12;
   readonly total: number = 100;
-  Users: any = [];
+  Products: Array<ProductModel> = [];
 
   constructor(private service: SharedService) {}
 
@@ -20,8 +21,7 @@ export class CardListComponent implements OnInit {
 
   LoadProducts() {
     this.service.getAllProducts(this.page, this.limit).subscribe((r: any) => {
-      this.Users = r;
-      console.log(r);
+      this.Products = r;
     });
   }
 
