@@ -1,10 +1,10 @@
 {
    "Product":{
       "title":{
-         "loremWords": { "minLength": 10, "maxLength": 15 }
+         "loremWords": { "minLength": 5, "maxLength": 9 }
       },
       "longDescription":{
-         "loremSentences": { "minLength": 50, "maxLength": 70 }
+         "loremSentences": { "minLength": 30, "maxLength": 50 }
       },
       "price": { "int": { "min": 100, "max": 10000 } } ,
       "photo": { "regexp": "https://picsum\\.photos/seed/[0-9]{5}/300/250" }
