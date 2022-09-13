@@ -21,24 +21,29 @@
       <ul
         class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
       >
+        <!-- <li>
+
+        </li> -->
         <li>
-          <img
-            src="assets/storeLogo.png"
-            alt="Bootstrap"
-            width="50"
-            height="50"
-            loading="lazy"
-            routerLink=""
-          />
+          <a routerLink="" class="nav-link px-2 text-secondary">
+            <img
+              src="assets/storeLogo.png"
+              class="w-100"
+              alt="Bootstrap"
+              width="160"
+              height="33"
+              loading="lazy"
+              routerLink=""
+            />
+          </a>
         </li>
-        <li><a routerLink="" class="nav-link px-2 text-secondary">Home</a></li>
         <li>
           <a routerLink="cardList" class="nav-link px-2 text-white"
             >Product List</a
           >
         </li>
-        <li><a href="#" class="nav-link px-2 text-white">My Card</a></li>
-        <li><a href="#" class="nav-link px-2 text-white">Profile</a></li>
+        <li><a href="myCards" class="nav-link px-2 text-white">My Card</a></li>
+        <li><a href="profile" class="nav-link px-2 text-white">Profile</a></li>
       </ul>
 
       <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -51,8 +56,17 @@
       </form> -->
 
       <div class="text-end">
-        <button type="button" class="btn btn-outline-light me-2">Login</button>
-        <button type="button" class="btn btn-warning">Sign-up</button>
+        <button
+          routerLink="signin"
+          type="button"
+          class="btn btn-outline-light me-2"
+        >
+          Login
+        </button>
+        <button routerLink="signup" type="button" class="btn btn-warning">
+          Sign-up
+        </button>
+        <button type="button" class="btn btn-outline-light">Sign-Out</button>
       </div>
     </div>
   </div>

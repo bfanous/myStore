@@ -13,9 +13,9 @@
       "
     >
       <div class="card mb-4">
-        <img src="{{ i.photo }}" alt="Test" />
+        <img [src]="i.photo" alt="Test" />
         <h1 class="text-uppercase fw-bold fs-2">{{ i.title }}</h1>
-        <p class="price">${{ i.price }}</p>
+        <p class="price">{{ i.price | currency }}</p>
         <p class="text">{{ i.longDescription }}</p>
         <p><button class="btn btn-primary">Add to Card</button></p>
       </div>

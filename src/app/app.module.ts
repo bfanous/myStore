@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CardDetailsComponent } from './cardDetails/cardDetails.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -12,13 +13,14 @@ import { FooterComponent } from './footer/footer.component';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HeaderComponent,
     CardListComponent,
     HomeComponent,
     FooterComponent,
-  ],
+      CardDetailsComponent
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,

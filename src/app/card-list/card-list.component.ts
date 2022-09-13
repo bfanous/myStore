@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class CardListComponent implements OnInit {
   page: number = 1;
   readonly limit: number = 12;
-  readonly total: number = 500;
+  readonly total: number = 100;
   Users: any = [];
 
   constructor(private service: SharedService) {}
