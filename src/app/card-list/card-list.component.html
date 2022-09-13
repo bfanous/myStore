@@ -1,17 +1,27 @@
 <div class="container mt-6">
   <div class="row">
-    <div class="col-md-3" *ngFor="let i of Users">
+    <div
+      class="col-md-3"
+      *ngFor="
+        let i of Users
+          | paginate
+            : {
+                itemsPerPage: limit,
+                currentPage: page,
+                totalItems: total
+              }
+      "
+    >
       <div class="card mb-4">
-        <img
-          src="https:/picsum.photos/300/375"
-          alt="Test"
-          style="width: 100%"
-        />
-        <h1>Test Cards</h1>
-        <p class="price">${{ i }}</p>
-        <p>Some Text About Card</p>
-        <p><button>Add to Card</button></p>
+        <img src="{{ i.photo }}" alt="Test" style="width: 100%" />
+        <h1>{{ i.title }}</h1>
+        <p class="price">${{ i.price }}</p>
+        <p>{{ i.longDescription }}</p>
+        <p><button class="btn btn-primary">Add to Card</button></p>
       </div>
     </div>
+    <pagination-controls
+      (pageChange)="pageChangeEvent($event)"
+    ></pagination-controls>
   </div>
 </div>

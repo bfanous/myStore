@@ -1,3 +1,4 @@
+import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,11 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-list.component.css'],
 })
 export class CardListComponent implements OnInit {
-  Users: any = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  ];
+  page: number = 1;
+  readonly limit: number = 12;
+  readonly total: number = 500;
+  Users: any = [];
 
-  constructor() {}
+  constructor(private service: SharedService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.LoadProducts();
+  }
+
+  LoadProducts() {
+    this.service.getAllProducts(this.page, this.limit).subscribe((r: any) => {
+      this.Users = r;
+      console.log(r);
+    });
+  }
+
+  pageChangeEvent(event: number) {
+    this.page = event;
+    this.LoadProducts();
+  }
 }
