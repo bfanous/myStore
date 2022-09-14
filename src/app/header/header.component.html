@@ -25,7 +25,11 @@
 
         </li> -->
         <li>
-          <a routerLink="" class="nav-link px-2 text-secondary">
+          <a
+            routerLink=""
+            routerLinkActive="active"
+            class="nav-link px-2 text-secondary"
+          >
             <img
               src="assets/storeLogo.png"
               class="w-100"
@@ -38,15 +42,28 @@
           </a>
         </li>
         <li>
-          <a routerLink="cardList" class="nav-link px-2 text-white"
+          <a
+            routerLink="cardList"
+            routerLinkActive="active"
+            class="nav-link px-2 text-white"
             >Product List</a
           >
         </li>
         <li>
-          <a routerLink="myCards" class="nav-link px-2 text-white">My Card</a>
+          <a
+            routerLink="myCards"
+            routerLinkActive="active"
+            class="nav-link px-2 text-white"
+            >My Card</a
+          >
         </li>
         <li>
-          <a routerLink="profile" class="nav-link px-2 text-white">Profile</a>
+          <a
+            routerLink="profile"
+            routerLinkActive="active"
+            class="nav-link px-2 text-white"
+            >Profile</a
+          >
         </li>
       </ul>
 
@@ -66,6 +83,7 @@
           width="30"
           height="30"
           routerLink="myCards"
+          routerLinkActive="active"
           style="cursor: pointer"
         />
         <span class="translate-middle badge rounded-pill bg-danger">
@@ -73,12 +91,18 @@
         </span>
         <button
           routerLink="signin"
+          routerLinkActive="active"
           type="button"
           class="btn btn-outline-light me-2"
         >
           Login
         </button>
-        <button routerLink="signup" type="button" class="btn btn-warning">
+        <button
+          routerLink="signup"
+          routerLinkActive="active"
+          type="button"
+          class="btn btn-warning"
+        >
           Sign-up
         </button>
         <button type="button" class="btn btn-outline-light">Sign-Out</button>
