@@ -127,7 +127,10 @@
                     [disabled]="myForm.form.invalid"
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
                   >
-                    Register
+                    <ng-container *ngIf="isLoading()"
+                      >Loading! ...</ng-container
+                    >
+                    <ng-container *ngIf="!isLoading()">Register</ng-container>
                   </button>
                 </div>
               </form>

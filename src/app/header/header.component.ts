@@ -1,3 +1,4 @@
+import { AuthService } from './../Core/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../shared.service';
 
@@ -8,7 +9,17 @@ import { SharedService } from '../shared.service';
 })
 export class HeaderComponent implements OnInit {
   // public itemsCounter: number = this.service.getItemsCounter();
-  constructor(public service: SharedService) {}
+  constructor(
+    private service: SharedService,
+    private authservice: AuthService
+  ) {}
 
   ngOnInit(): void {}
+
+  isAuth() {
+    return this.authservice.isAuth;
+  }
+  getCounter() {
+    return this.service.getItemsCounter();
+  }
 }

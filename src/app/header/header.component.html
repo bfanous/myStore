@@ -49,22 +49,24 @@
             >Product List</a
           >
         </li>
-        <li>
-          <a
-            routerLink="myCards"
-            routerLinkActive="active"
-            class="nav-link px-2 text-white"
-            >My Card</a
-          >
-        </li>
-        <li>
-          <a
-            routerLink="profile"
-            routerLinkActive="active"
-            class="nav-link px-2 text-white"
-            >Profile</a
-          >
-        </li>
+        <ng-container *ngIf="isAuth()">
+          <li>
+            <a
+              routerLink="myCards"
+              routerLinkActive="active"
+              class="nav-link px-2 text-white"
+              >My Card</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="profile"
+              routerLinkActive="active"
+              class="nav-link px-2 text-white"
+              >Profile</a
+            >
+          </li>
+        </ng-container>
       </ul>
 
       <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -87,25 +89,29 @@
           style="cursor: pointer"
         />
         <span class="translate-middle badge rounded-pill bg-danger">
-          {{ this.service.getItemsCounter() }}
+          {{ getCounter() }}
         </span>
-        <button
-          routerLink="signin"
-          routerLinkActive="active"
-          type="button"
-          class="btn btn-outline-light me-2"
-        >
-          Login
-        </button>
-        <button
-          routerLink="signup"
-          routerLinkActive="active"
-          type="button"
-          class="btn btn-warning"
-        >
-          Sign-up
-        </button>
-        <button type="button" class="btn btn-outline-light">Sign-Out</button>
+        <ng-container *ngIf="!isAuth()">
+          <button
+            routerLink="signin"
+            routerLinkActive="active"
+            type="button"
+            class="btn btn-outline-light me-2"
+          >
+            Login
+          </button>
+          <button
+            routerLink="signup"
+            routerLinkActive="active"
+            type="button"
+            class="btn btn-warning"
+          >
+            Sign-up
+          </button>
+        </ng-container>
+        <ng-container *ngIf="isAuth()">
+          <button type="button" class="btn btn-outline-light">Sign-Out</button>
+        </ng-container>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <body class="text-center">
   <main class="form-signin w-100 m-auto">
-    <form (ngSubmit)="submit()">
+    <form (ngSubmit)="submit()" #myForm="ngForm">
       <img
         class="mb-4"
         src="assets/userImage.png"
@@ -18,8 +18,17 @@
           placeholder="name@example.com"
           name="email"
           [(ngModel)]="formLogin.email"
+          #email="ngModel"
+          required
         />
         <label for="floatingInput">Email address</label>
+        <div
+          *ngIf="email.invalid && (email.touched || email.dirty)"
+          class="rounded"
+          style="text-align: center; width: 100%; color: rgb(183, 14, 14)"
+        >
+          Email field must be Valid.
+        </div>
       </div>
       <div class="form-floating">
         <input
@@ -29,11 +38,25 @@
           placeholder="Password"
           name="password"
           [(ngModel)]="formLogin.password"
+          #password="ngModel"
+          required
         />
         <label for="floatingPassword">Password</label>
+        <div
+          *ngIf="password.invalid && (password.touched || password.dirty)"
+          class="rounded"
+          style="text-align: center; width: 100%; color: rgb(183, 14, 14)"
+        >
+          Password field must be Valid.
+        </div>
       </div>
-      <button class="w-100 btn btn-lg btn-primary" type="submit">
-        Sign in
+      <button
+        class="w-100 btn btn-lg btn-primary"
+        type="submit"
+        [disabled]="myForm.form.invalid"
+      >
+        <ng-container *ngIf="isLoading()">Loading! ...</ng-container>
+        <ng-container *ngIf="!isLoading()">Sign in</ng-container>
       </button>
     </form>
   </main>

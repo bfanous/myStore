@@ -1,7 +1,6 @@
-import { FormsModule } from '@angular/forms';
+import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { LoginModel } from 'src/app/models/loginModel';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 @Component({
   selector: 'app-signin',
@@ -14,28 +13,14 @@ export class SigninComponent implements OnInit {
     password: '',
   };
 
-  constructor() {}
+  constructor(private authservice: AuthService) {}
 
   ngOnInit() {}
 
   submit() {
-    const auth = getAuth();
-    signInWithEmailAndPassword(
-      auth,
-      this.formLogin.email,
-      this.formLogin.password
-    )
-      .then((userCredential) => {
-        alert('Logged In :D');
-
-        // Signed in
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert('Cred Are Wrong');
-      });
+    this.authservice.login(this.formLogin);
+  }
+  isLoading() {
+    return this.authservice.isLoading;
   }
 }
