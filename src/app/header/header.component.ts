@@ -22,4 +22,8 @@ export class HeaderComponent implements OnInit {
   getCounter() {
     return this.service.getItemsCounter();
   }
+
+  logout() {
+    this.authservice.logout();
+  }
 }

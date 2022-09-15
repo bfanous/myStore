@@ -6,15 +6,20 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SharedService {
-  readonly BaseUrl = 'https://mockend.com/bfanous/myStore/';
+  // readonly BaseUrl = 'https://mockend.com/bfanous/myStore/';
+  // getAllProducts(page: number, limit: number): Observable<any[]> {
+  //   return this.http.get<any>(
+  //     this.BaseUrl + 'Product?limit=' + limit + '&offset=' + (page - 1) * limit
+  //   );
+  // }
 
   private itemsCounter: number = this.getItemsCounter();
-
+  readonly url = 'http://beshoyfanous-001-site1.btempurl.com/api/';
   constructor(private http: HttpClient) {}
 
-  getAllProducts(page: number, limit: number): Observable<any[]> {
+  getAllProductsCRM(page: number, count: number): Observable<any[]> {
     return this.http.get<any>(
-      this.BaseUrl + 'Product?limit=' + limit + '&offset=' + (page - 1) * limit
+      this.url + 'Show/getProductList?page=' + page + '&count=' + count
     );
   }
 

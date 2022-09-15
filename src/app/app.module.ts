@@ -2,7 +2,6 @@ import { InvoiceComponent } from './account/invoice/invoice.component';
 import { MyCardsComponent } from './account/myCards/myCards.component';
 import { ProfileComponent } from './account/profile/profile.component';
 import { CardPopupComponent } from './card-list/cardPopup/cardPopup.component';
-import { CardComponent } from './card-list/card/card.component';
 import { NgModule } from '@angular/core';
 import { CardDetailsComponent } from './cardDetails/cardDetails.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,7 +24,6 @@ import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
     HomeComponent,
     FooterComponent,
     CardDetailsComponent,
-    CardComponent,
     CardPopupComponent,
     ProfileComponent,
     MyCardsComponent,

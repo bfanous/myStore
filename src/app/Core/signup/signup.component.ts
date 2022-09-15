@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterModel } from 'src/app/models/registerModel';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -21,9 +20,15 @@ export class SignupComponent implements OnInit {
   ngOnInit() {}
 
   submit() {
-    this.authservice.register(this.fromRegister);
+    this.authservice.register(this.fromRegister).subscribe((res) => {
+      this.setIsLoading(false);
+      console.log(res);
+    });
   }
   isLoading() {
     return this.authservice.isLoading;
+  }
+  setIsLoading(bool: boolean) {
+    this.authservice.isLoading = bool;
   }
 }

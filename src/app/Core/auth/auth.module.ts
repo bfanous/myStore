@@ -1,4 +1,3 @@
-import { SignoutComponent } from './../signout/signout.component';
 import { SignupComponent } from './../signup/signup.component';
 import { SigninComponent } from './../signin/signin.component';
 import { NgModule } from '@angular/core';
@@ -7,6 +6,6 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
-  declarations: [SigninComponent, SignupComponent, SignoutComponent],
+  declarations: [SigninComponent, SignupComponent],
 })
 export class AuthModule {}

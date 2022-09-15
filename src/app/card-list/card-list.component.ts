@@ -1,6 +1,7 @@
 import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
-import { ProductModel } from '../models/productModel';
+import { ProductModelCRM } from '../models/productModel';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-card-list',
@@ -9,9 +10,10 @@ import { ProductModel } from '../models/productModel';
 })
 export class CardListComponent implements OnInit {
   page: number = 1;
-  readonly limit: number = 12;
-  readonly total: number = 100;
-  Products: Array<ProductModel> = [];
+  readonly count: number = 3;
+  total: number = 0;
+  // Products: Array<ProductModel> = [];
+  crmProduct: ProductModelCRM[] = [];
 
   constructor(private service: SharedService) {}
 
@@ -20,9 +22,21 @@ export class CardListComponent implements OnInit {
   }
 
   LoadProducts() {
-    this.service.getAllProducts(this.page, this.limit).subscribe((r: any) => {
-      this.Products = r;
-    });
+    this.service
+      .getAllProductsCRM(this.page, this.count)
+      .subscribe((r: any) => {
+        this.crmProduct = r.modelViewList;
+        this.total = r.TotalCount;
+        console.log(r);
+      });
+    // this.service.getAllProducts(this.page, this.limit).subscribe((r: any) => {
+    //   this.Products = r;
+    // });
+  }
+
+  addToCard() {
+    this.service.updateItemsCounter(this.service.getItemsCounter() + 1);
+    console.log(this.crmProduct);
   }
 
   pageChangeEvent(event: number) {

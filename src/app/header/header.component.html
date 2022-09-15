@@ -110,7 +110,13 @@
           </button>
         </ng-container>
         <ng-container *ngIf="isAuth()">
-          <button type="button" class="btn btn-outline-light">Sign-Out</button>
+          <button
+            (click)="logout()"
+            type="button"
+            class="btn btn-outline-light"
+          >
+            Sign-Out
+          </button>
         </ng-container>
       </div>
     </div>
