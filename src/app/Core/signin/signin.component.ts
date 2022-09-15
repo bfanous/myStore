@@ -20,11 +20,14 @@ export class SigninComponent implements OnInit {
 
   submit() {
     this.authservice.login(this.formLogin).subscribe((res) => {
-      if (res === true) {
+      if (res === false) {
+        this.authservice.Auth(false);
+        console.log('Wrong User');
+      } else {
         this.authservice.Auth(true);
+        this.router.navigate(['cardList']);
       }
       this.setIsLoading(false);
-      this.router.navigate(['cardList']);
       console.log(res);
       console.log(this.authservice.isAuth);
     });

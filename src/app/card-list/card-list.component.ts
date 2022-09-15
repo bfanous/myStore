@@ -10,7 +10,7 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class CardListComponent implements OnInit {
   page: number = 1;
-  readonly count: number = 3;
+  readonly count: number = 12;
   total: number = 0;
   // Products: Array<ProductModel> = [];
   crmProduct: ProductModelCRM[] = [];

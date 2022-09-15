@@ -19,8 +19,10 @@ export class AuthService {
     this.isAuth = isauth;
   }
   isLoading: boolean = false;
+  //production URL
+  // readonly baseURL = 'http://beshoyfanous-001-site1.btempurl.com/api/';
 
-  readonly baseURL = 'http://beshoyfanous-001-site1.btempurl.com/api/';
+  readonly baseURL = 'https://localhost:44353/api/';
 
   constructor(/*private router: Router,*/ private http: HttpClient) {}
 

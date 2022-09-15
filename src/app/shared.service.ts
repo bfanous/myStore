@@ -14,7 +14,10 @@ export class SharedService {
   // }
 
   private itemsCounter: number = this.getItemsCounter();
-  readonly url = 'http://beshoyfanous-001-site1.btempurl.com/api/';
+  // Production URL
+  // readonly url = 'http://beshoyfanous-001-site1.btempurl.com/api/';
+
+  readonly url = 'https://localhost:44353/api/';
   constructor(private http: HttpClient) {}
 
   getAllProductsCRM(page: number, count: number): Observable<any[]> {
