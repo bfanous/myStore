@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { addToCardModel } from './models/productModel';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +25,11 @@ export class SharedService {
     return this.http.get<any>(
       this.url + 'Show/getProductList?page=' + page + '&count=' + count
     );
+  }
+  addToCard(usermodel: addToCardModel) {
+    return this.http.post(this.url + 'User/addToCard', usermodel, {
+      headers: { guest: 'false' },
+    });
   }
 
   updateItemsCounter(newCounter: number) {

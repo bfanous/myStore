@@ -14,3 +14,8 @@ export interface ProductModelCRM {
   fileName: string;
   documentBody: string;
 }
+
+export interface addToCardModel {
+  Email: string;
+  ProductCode: string;
+}

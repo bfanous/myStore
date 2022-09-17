@@ -6,14 +6,14 @@
       <!-- <a
         href="/"
         class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-      >
+        >
         <svg
           class="bi me-2"
           width="40"
           height="32"
           role="img"
           aria-label="Bootstrap"
-        >
+          >
           <use xlink:href="#bootstrap" />
         </svg>
       </a> -->
@@ -23,7 +23,7 @@
       >
         <!-- <li>
 
-        </li> -->
+      </li> -->
         <li>
           <a
             routerLink=""
@@ -49,7 +49,7 @@
             >Product List</a
           >
         </li>
-        <ng-container *ngIf="isAuth()">
+        <ng-container *ngIf="authservice.isAuthenticated$ | async">
           <li>
             <a
               routerLink="myCards"
@@ -70,13 +70,13 @@
       </ul>
 
       <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-        <input
+          <input
           type="search"
           class="form-control form-control-dark text-bg-dark"
           placeholder="Search..."
           aria-label="Search"
-        />
-      </form> -->
+          />
+        </form> -->
 
       <div class="text-end">
         <img
@@ -91,12 +91,11 @@
         <span class="translate-middle badge rounded-pill bg-danger">
           {{ getCounter() }}
         </span>
-        <ng-container *ngIf="!isAuth()">
+        <ng-container *ngIf="!(authservice.isAuthenticated$ | async)">
           <button
-            routerLink="signin"
-            routerLinkActive="active"
             type="button"
             class="btn btn-outline-light me-2"
+            (click)="LoginWithAuth0()"
           >
             Login
           </button>
@@ -109,7 +108,7 @@
             Sign-up
           </button>
         </ng-container>
-        <ng-container *ngIf="isAuth()">
+        <ng-container *ngIf="authservice.isAuthenticated$ | async">
           <button
             (click)="logout()"
             type="button"
