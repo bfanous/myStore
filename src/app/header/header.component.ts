@@ -31,5 +31,6 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authservice.logout({ returnTo: this.doc.location.origin });
+    localStorage.clear();
   }
 }

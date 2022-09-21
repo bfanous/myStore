@@ -1,11 +1,3 @@
-export interface ProductModel {
-  id?: number;
-  title: string;
-  longDescription: string;
-  price: number;
-  photo: string;
-}
-
 export interface ProductModelCRM {
   ProductName: string;
   ProductCode?: string;
@@ -13,9 +5,16 @@ export interface ProductModelCRM {
   ProductDetails: string;
   fileName: string;
   documentBody: string;
+  Email: string;
+  Amount: number;
 }
 
-export interface addToCardModel {
+export interface MyProductListModelCRM {
+  ProductName: string;
+  documentBody: string;
+  fileName: string;
+  ProductDetails: string;
+  ProductPrice: number;
+  Amount: number;
   Email: string;
-  ProductCode: string;
 }

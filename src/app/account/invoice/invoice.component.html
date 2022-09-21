@@ -1,3 +1,135 @@
-<p>
-  invoice works!
-</p>
+<div class="container mt-5 mb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="text-left logo p-2 px-5">
+          <img src="assets/storeLogo.png" width="50" />
+        </div>
+
+        <div class="invoice p-5">
+          <h5>Your order Confirmed!</h5>
+
+          <span class="font-weight-bold d-block mt-4">Hello, {{ user }}</span>
+          <span
+            >You order has been confirmed and will be shipped in next two
+            days!</span
+          >
+
+          <div
+            class="payment border-top mt-3 mb-3 border-bottom table-responsive"
+          >
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Order Date</span>
+                      <span>{{ myDate | date: "shortDate" }}</span>
+                    </div>
+                  </td>
+
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Order No</span>
+                      <span>MT12332345</span>
+                    </div>
+                  </td>
+
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Payment</span>
+                      <span
+                        ><img
+                          src="https://img.icons8.com/color/48/000000/mastercard.png"
+                          width="20"
+                      /></span>
+                    </div>
+                  </td>
+
+                  <td>
+                    <div class="py-2">
+                      <span class="d-block text-muted">Shiping Address</span>
+                      <span>414 Test Street, Cairo,Egypt</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row d-flex justify-content-end">
+            <div class="col-md-5">
+              <table class="table table-borderless">
+                <tbody class="totals">
+                  <tr>
+                    <td>
+                      <div class="text-left">
+                        <span class="text-muted">Subtotal</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-right">
+                        <span>{{ subTotal | currency }}</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="text-left">
+                        <span class="text-muted">Shipping Fee</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-right">
+                        <span>{{ 0.1 * subTotal | currency }}</span>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="text-left">
+                        <span class="text-muted">Tax Fee</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-right">
+                        <span>{{ 0.14 * subTotal | currency }}</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="border-top border-bottom">
+                    <td>
+                      <div class="text-left">
+                        <span class="font-weight-bold">Subtotal</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="text-right">
+                        <span class="font-weight-bold">{{
+                          1.24 * subTotal | currency
+                        }}</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p>
+            We will be sending shipping confirmation email when the item shipped
+            successfully!
+          </p>
+          <p class="font-weight-bold mb-0">Thanks for shopping with us!</p>
+          <span><img src="assets/storeLogo.png" width="50" /> Team</span>
+        </div>
+
+        <div class="d-flex justify-content-between footer p-3">
+          <span>Need Help? visit our <a href="#"> help center</a></span>
+          <span>{{ myDate | date: "shortDate" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
-import { ProductModelCRM, addToCardModel } from '../models/productModel';
+import { ProductModelCRM } from '../models/productModel';
 
 @Component({
   selector: 'app-card-list',
@@ -13,23 +13,22 @@ export class CardListComponent implements OnInit {
   total: number = 0;
 
   crmProduct: ProductModelCRM[] = [];
-  userModel: addToCardModel = {
-    Email: 'beshoy@gmail.com',
-    ProductCode: 'Code (Angular Project) 04',
-  };
 
   constructor(private service: SharedService) {}
 
   ngOnInit(): void {
     this.LoadProducts();
   }
+  isLoading: boolean = true;
 
   LoadProducts() {
+    this.isLoading = true;
     this.service
       .getAllProductsCRM(this.page, this.count)
       .subscribe((r: any) => {
         this.crmProduct = r.modelViewList;
         this.total = r.TotalCount;
+        this.isLoading = false;
         // console.log(r);
       });
   }
@@ -39,8 +38,13 @@ export class CardListComponent implements OnInit {
     this.LoadProducts();
   }
 
-  addToCard() {
-    this.service.addToCard(this.userModel).subscribe((r: any) => {
+  addToCard(item: any) {
+    this.isLoading = true;
+    item.Email = this.service.getEmail();
+
+    this.service.addToCart(item).subscribe((r: any) => {
+      this.isLoading = false;
+
       console.log(r);
     });
     this.service.updateItemsCounter(this.service.getItemsCounter() + 1);

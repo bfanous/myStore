@@ -1,51 +1,55 @@
-<div class="container">
-  <div class="row">
-    <div
-      class="col-md-3 d-flex align-items-stretch"
-      *ngFor="
-        let product of crmProduct
-          | paginate
-            : {
-                itemsPerPage: count,
-                currentPage: page,
-                totalItems: total
-              }
-      "
-    >
-      <div class="card mb-4 p-2 w-100">
-        <div style="height: 350px">
-          <img
-            class="card w-100 h-100"
-            [src]="'data:image/jpg;base64,' + product.documentBody"
-            alt="image"
-          />
-        </div>
+<div class="container spinner" *ngIf="isLoading; else loaded">
+  <img src="assets/loading.svg" alt="Loading..." />
+</div>
+<ng-template #loaded>
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-md-3 d-flex align-items-stretch"
+        *ngFor="
+          let product of crmProduct
+            | paginate
+              : {
+                  itemsPerPage: count,
+                  currentPage: page,
+                  totalItems: total
+                }
+        "
+      >
+        <div class="card mb-4 p-2 w-100">
+          <div style="height: 350px">
+            <img
+              class="card w-100 h-100"
+              [src]="'data:image/jpg;base64,' + product.documentBody"
+              alt="image"
+            />
+          </div>
 
-        <div class="text-center">
-          <h4
-            routerLink="#"
-            class="text-uppercase fs-2"
-            style="cursor: pointer"
-          >
-            {{ product.ProductName }}
-          </h4>
-          <p class="price">{{ product.ProductPrice | currency }}</p>
-          <p class="text">{{ product.ProductDetails }}</p>
-          <p>
-            <button (click)="addToCard()" class="btn btn-primary">
-              Add to Card
-            </button>
-          </p>
+          <div class="text-center">
+            <h4
+              routerLink="#"
+              class="text-uppercase fs-2"
+              style="cursor: pointer"
+            >
+              {{ product.ProductName }}
+            </h4>
+            <p class="price">{{ product.ProductPrice | currency }}</p>
+            <p class="text">{{ product.ProductDetails }}</p>
+            <p>
+              <button (click)="addToCard(product)" class="btn btn-primary">
+                Add to Card
+              </button>
+            </p>
+          </div>
         </div>
       </div>
     </div>
+    <pagination-controls
+      (pageChange)="pageChangeEvent($event)"
+    ></pagination-controls>
   </div>
-  <pagination-controls
-    (pageChange)="pageChangeEvent($event)"
-  ></pagination-controls>
-</div>
 
-<!-- <div class="card mb-4">
+  <!-- <div class="card mb-4">
         <img
           [src]="'data:image/jpg;base64,' + product.documentBody"
           alt="{{ product.fileName }}"
@@ -62,3 +66,4 @@
           </button>
         </p>
       </div> -->
+</ng-template>
