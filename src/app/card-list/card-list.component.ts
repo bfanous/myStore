@@ -1,6 +1,7 @@
 import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductModelCRM } from '../models/productModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card-list',
@@ -14,7 +15,7 @@ export class CardListComponent implements OnInit {
 
   crmProduct: ProductModelCRM[] = [];
 
-  constructor(private service: SharedService) {}
+  constructor(private service: SharedService, private router: Router) {}
 
   ngOnInit(): void {
     this.LoadProducts();
@@ -38,7 +39,7 @@ export class CardListComponent implements OnInit {
     this.LoadProducts();
   }
 
-  addToCard(item: any) {
+  addToCart(item: any) {
     this.isLoading = true;
     item.Email = this.service.getEmail();
 

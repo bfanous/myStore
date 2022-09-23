@@ -1,3 +1,33 @@
-<p>
-  cardDetails works!
-</p>
+<div class="container spinner" *ngIf="isLoading; else loaded">
+  <img src="assets/loading.svg" alt="Loading..." />
+</div>
+<ng-template #loaded>
+  <main class="container" style="height: 500px">
+    <div class="left-column p-3 m-3">
+      <img
+        class="active card w-100 h-100"
+        [src]="'data:image/jpg;base64,' + crmProduct.documentBody"
+        alt=""
+      />
+    </div>
+    <div class="right-column">
+      <div class="product-description">
+        <span>{{ crmProduct.ProductCode }}</span>
+        <h1>{{ crmProduct.ProductName }}</h1>
+        <p>
+          {{ crmProduct.ProductDetails }}
+        </p>
+      </div>
+
+      <!-- Product Pricing -->
+      <div class="price">
+        <div>
+          <span>{{ crmProduct.ProductPrice | currency }}</span>
+        </div>
+        <button (click)="addToCart(crmProduct)" class="btn btn-primary">
+          Add to Card
+        </button>
+      </div>
+    </div>
+  </main>
+</ng-template>

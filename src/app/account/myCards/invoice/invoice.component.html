@@ -9,7 +9,11 @@
         <div class="invoice p-5">
           <h5>Your order Confirmed!</h5>
 
-          <span class="font-weight-bold d-block mt-4">Hello, {{ user }}</span>
+          <span class="font-weight-bold d-block mt-4">Hello, {{ name }}</span>
+          <span class="font-weight-bold d-block mt-2">Email:, {{ user }}</span>
+          <span class="font-weight-bold d-block mt-2 mb-2"
+            >Phone:, {{ phone }}</span
+          >
           <span
             >You order has been confirmed and will be shipped in next two
             days!</span
@@ -49,7 +53,7 @@
                   <td>
                     <div class="py-2">
                       <span class="d-block text-muted">Shiping Address</span>
-                      <span>414 Test Street, Cairo,Egypt</span>
+                      <span>{{ address }}</span>
                     </div>
                   </td>
                 </tr>
@@ -69,7 +73,7 @@
                     </td>
                     <td>
                       <div class="text-right">
-                        <span>{{ subTotal | currency }}</span>
+                        <span>{{ total | currency }}</span>
                       </div>
                     </td>
                   </tr>
@@ -82,7 +86,7 @@
                     </td>
                     <td>
                       <div class="text-right">
-                        <span>{{ 0.1 * subTotal | currency }}</span>
+                        <span>{{ 0.1 * total | currency }}</span>
                       </div>
                     </td>
                   </tr>
@@ -95,7 +99,7 @@
                     </td>
                     <td>
                       <div class="text-right">
-                        <span>{{ 0.14 * subTotal | currency }}</span>
+                        <span>{{ 0.14 * total | currency }}</span>
                       </div>
                     </td>
                   </tr>
@@ -108,7 +112,7 @@
                     <td>
                       <div class="text-right">
                         <span class="font-weight-bold">{{
-                          1.24 * subTotal | currency
+                          1.24 * total | currency
                         }}</span>
                       </div>
                     </td>

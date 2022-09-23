@@ -1,8 +1,8 @@
+import { EmptyCartComponent } from './account/myCards/emptyCart/emptyCart.component';
 import { AuthModule } from '@auth0/auth0-angular';
-import { InvoiceComponent } from './account/invoice/invoice.component';
+import { InvoiceComponent } from './account/myCards/invoice/invoice.component';
 import { MyCardsComponent } from './account/myCards/myCards.component';
 import { ProfileComponent } from './account/profile/profile.component';
-import { CardPopupComponent } from './card-list/cardPopup/cardPopup.component';
 import { NgModule } from '@angular/core';
 import { CardDetailsComponent } from './cardDetails/cardDetails.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { environment } from 'src/environments/environment';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,10 @@ import { environment } from 'src/environments/environment';
     HomeComponent,
     FooterComponent,
     CardDetailsComponent,
-    CardPopupComponent,
     ProfileComponent,
     MyCardsComponent,
     InvoiceComponent,
+    EmptyCartComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +37,7 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
+    FormsModule,
     AuthModule.forRoot({
       ...environment.auth,
     }),

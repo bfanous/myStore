@@ -6,7 +6,6 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { ProfileComponent } from './account/profile/profile.component';
 import { CardDetailsComponent } from './cardDetails/cardDetails.component';
 import { AuthGuard } from '@auth0/auth0-angular';
-import { InvoiceComponent } from './account/invoice/invoice.component';
 
 const routes: Routes = [
   { path: 'viewProduct', component: CardDetailsComponent, pathMatch: 'full' },
@@ -16,9 +15,13 @@ const routes: Routes = [
     component: CardListComponent,
     pathMatch: 'full',
   },
+  {
+    path: 'cardList/:id',
+    component: CardDetailsComponent,
+    pathMatch: 'full',
+  },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'myCards', component: MyCardsComponent, canActivate: [AuthGuard] },
-  { path: 'myInvoice', component: InvoiceComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

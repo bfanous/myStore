@@ -27,7 +27,7 @@
 
           <div class="text-center">
             <h4
-              routerLink="#"
+              [routerLink]="['/cardList', product.ProductCode]"
               class="text-uppercase fs-2"
               style="cursor: pointer"
             >
@@ -36,7 +36,7 @@
             <p class="price">{{ product.ProductPrice | currency }}</p>
             <p class="text">{{ product.ProductDetails }}</p>
             <p>
-              <button (click)="addToCard(product)" class="btn btn-primary">
+              <button (click)="addToCart(product)" class="btn btn-primary">
                 Add to Card
               </button>
             </p>
@@ -61,7 +61,7 @@
         <p class="price">{{ product.ProductPrice | currency }}</p>
         <p class="text">{{ product.ProductDetails }}</p>
         <p>
-          <button (click)="addToCard()" class="btn btn-primary">
+          <button (click)="addToCart()" class="btn btn-primary">
             Add to Card
           </button>
         </p>

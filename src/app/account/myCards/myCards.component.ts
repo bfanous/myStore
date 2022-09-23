@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { MyProductListModelCRM } from 'src/app/models/productModel';
 import { SharedService } from 'src/app/shared.service';
+import { InvoiceComponent } from './invoice/invoice.component';
+import { EmptyCartComponent } from './emptyCart/emptyCart.component';
 
 @Component({
   selector: 'app-myCards',
@@ -16,6 +18,19 @@ export class MyCardsComponent implements OnInit {
   ngOnInit() {
     this.getMyProductLists();
   }
+  model = new FormCheckout('', '', '');
+
+  isSsubmitted = false;
+
+  onSubmit() {
+    this.isSsubmitted = true;
+    this.getTotal();
+    this.RmoveAll();
+  }
+
+  newHero() {
+    this.model = new FormCheckout('', '', '');
+  }
 
   public getTotal(): number {
     this.grandTotal = 0;
@@ -25,6 +40,8 @@ export class MyCardsComponent implements OnInit {
     return this.grandTotal;
   }
   getMyProductLists() {
+    this.isLoading = true;
+
     this.Email = (localStorage.getItem('userEmail') as string) || '';
     this.service.getProducts(this.Email).subscribe((res: any) => {
       this.products = res?.modelViewList;
@@ -44,12 +61,26 @@ export class MyCardsComponent implements OnInit {
       this.service.updateItemsCounter(0);
     });
   }
+  removeFromCart(product: any) {
+    this.isLoading = true;
+    product.Email = this.service.getEmail();
 
+    this.service.removeFromCart(product).subscribe((r: any) => {
+      this.isLoading = false;
+      this.getMyProductLists();
+      this.service.updateItemsCounter(this.service.getItemsCounter() - 1);
+      console.log(r);
+    });
+  }
   IncrementAmount(i: number) {
     this.products[i].Amount++;
   }
   DecrementAmount(i: number) {
-    if (this.products[i].Amount != 1) this.products[i].Amount--;
+    if (this.products[i].Amount !== 1) {
+      this.products[i].Amount--;
+    } else if (this.products[i].Amount === 1) {
+      this.removeFromCart(this.products[i]);
+    }
   }
 
   @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
@@ -64,4 +95,12 @@ export class MyCardsComponent implements OnInit {
       return dialogText;
     };
   }
+}
+
+export class FormCheckout {
+  constructor(
+    public name: string,
+    public address: string,
+    public phone: string
+  ) {}
 }

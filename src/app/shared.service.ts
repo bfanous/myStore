@@ -46,6 +46,19 @@ export class SharedService {
   public myItemsList: any = [];
   public myProductList = new BehaviorSubject<any>([]);
 
+  getProductDetails(ProductCode: string): Observable<any[]> {
+    return this.http
+      .get<any>(this.url + 'Show/getProductDetails', {
+        params: {
+          productCode: ProductCode,
+        },
+      })
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
+  }
   getProducts(email: string): Observable<any[]> {
     // return this.http.get<any>(this.url + 'Show/getMyProductList', {
     //   params: {
@@ -82,17 +95,22 @@ export class SharedService {
     // this.myProductList.next(this.myItemsList);
     // this.getTotalPrice();
 
-    return this.http.post(this.url + 'User/addToCard', product, {
+    return this.http.post(this.url + 'User/addToCart', product, {
       headers: { guest: 'false' },
     });
   }
   removeFromCart(product: any) {
-    this.myItemsList.map((a: any, index: any) => {
-      if (product.id === a.id) {
-        this.myItemsList.splice(index, 1);
-      }
+    return this.http.post(this.url + '/User/removeFromCart', product, {
+      headers: { guest: 'false' },
     });
   }
+  // removeFromCart(product: any) {
+  //   this.myItemsList.map((a: any, index: any) => {
+  //     if (product.id === a.id) {
+  //       this.myItemsList.splice(index, 1);
+  //     }
+  //   });
+  // }
   removeAllItems(userEmail: string) {
     return this.http.post(
       this.url + 'User/disassociateAllProducts?user=' + userEmail,
