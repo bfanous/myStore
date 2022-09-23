@@ -6,6 +6,14 @@ Project related to Angular course with FWD & Udacity
 
 Beshoy Fanous Kamal
 
+## Please Note that BackEnd Performance is little slow So please Open console and wait till reponse is recived with true
+
+## Also Please Login with this accoune
+
+### Email : Beshoy@gmail.com
+
+### Password: @ngular1
+
 ## Project Description
 
 myStore is a small eCommerce website with basic functionality
@@ -60,7 +68,7 @@ myStore is a small eCommerce website with basic functionality
 
 - myStore Project is using nodejs 14.15
 - you need to use this account for login to be able to see all the website functions
-  [Email] is [beshoy@gmail.com] and [[Password]:] is [@ngular1]
+  Email: is [beshoy@gmail.com] and Password: is [@ngular1]
 
   ### Note That This account is the only one used is Auth0 and Backend system
 
