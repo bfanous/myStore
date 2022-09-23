@@ -11,9 +11,9 @@ export class SharedService {
   private itemsCounter: number = this.getItemsCounter();
   private email: string = '';
   // Production URL
-  // readonly url = 'http://beshoyfanous-001-site1.btempurl.com/api/';
-
-  readonly url = 'https://localhost:44353/api/';
+  readonly url = 'http://beshoyfanous-001-site1.btempurl.com/api/';
+  //Local URL
+  // readonly url = 'https://localhost:44353/api/';
   constructor(private http: HttpClient, private auth: AuthService) {
     this.auth.user$.subscribe((profile) => {
       this.email = JSON.stringify(profile?.email, null, 2);

@@ -41,7 +41,6 @@ export class MyCardsComponent implements OnInit {
   }
   getMyProductLists() {
     this.isLoading = true;
-
     this.Email = (localStorage.getItem('userEmail') as string) || '';
     this.service.getProducts(this.Email).subscribe((res: any) => {
       this.products = res?.modelViewList;

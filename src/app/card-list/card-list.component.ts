@@ -2,6 +2,7 @@ import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductModelCRM } from '../models/productModel';
 import { Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-card-list',
@@ -15,7 +16,11 @@ export class CardListComponent implements OnInit {
 
   crmProduct: ProductModelCRM[] = [];
 
-  constructor(private service: SharedService, private router: Router) {}
+  constructor(
+    private service: SharedService,
+    private router: Router,
+    public authservice: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.LoadProducts();
@@ -42,13 +47,16 @@ export class CardListComponent implements OnInit {
   addToCart(item: any) {
     this.isLoading = true;
     item.Email = this.service.getEmail();
+    if (item.Email === undefined) {
+      this.authservice.loginWithRedirect();
+    } else {
+      this.service.addToCart(item).subscribe((r: any) => {
+        this.isLoading = false;
 
-    this.service.addToCart(item).subscribe((r: any) => {
-      this.isLoading = false;
-
-      console.log(r);
-    });
-    this.service.updateItemsCounter(this.service.getItemsCounter() + 1);
-    console.log(this.crmProduct);
+        console.log(r);
+      });
+      this.service.updateItemsCounter(this.service.getItemsCounter() + 1);
+      console.log(this.crmProduct);
+    }
   }
 }
