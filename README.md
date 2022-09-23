@@ -6,9 +6,9 @@ Project related to Angular course with FWD & Udacity
 
 Beshoy Fanous Kamal
 
-## Please Note that BackEnd Performance is little slow So please Open console and wait till reponse is recived with true
+## Please Note that Backend Performance is little slow So please Open console and wait till response is received with true
 
-## Also Please Login with this accoune
+## Also Please Login with this account
 
 ### Email : Beshoy@gmail.com
 
